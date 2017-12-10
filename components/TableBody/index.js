@@ -23,7 +23,7 @@ class TableBody extends Component {
 	};
 
   componentDidMount() {
-    fetch('https://opjiuqzobv.localtunnel.me/table').then(res => {
+    fetch('https://bcbtuizkbj.localtunnel.me/table').then(res => {
       return res.json();
     }).then(res => {
       this.setState({
@@ -82,7 +82,7 @@ class TableBody extends Component {
 }
 
 const ContainerView = styled.View`
-	padding-bottom: 80px;
+
 `;
 
 const StyledView = styled.View`

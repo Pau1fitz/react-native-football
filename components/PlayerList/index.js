@@ -4,12 +4,23 @@ import { images } from './images';
 import { AppLoading, Font } from 'expo';
 import { FlatList, Text, ScrollView, View, Image } from 'react-native';
 
-class GoalsAssistsBody extends Component {
+class GoalsBody extends Component {
 
   state = {
-    table: [],
-		loaded: false
+		loaded: false,
+		players: []
   };
+
+	componentWillReceiveProps(nextProps) {
+
+		console.log(nextProps)
+
+		if(this.props != nextProps) {
+			this.setState({
+				players: nextProps.players
+			})
+		}
+	}
 
 	componentWillMount() {
 		this._loadAssetsAsync();
@@ -22,18 +33,6 @@ class GoalsAssistsBody extends Component {
 		this.setState({ loaded: true });
 	};
 
-  componentDidMount() {
-    fetch('https://tadzkadijq.localtunnel.me/topscorers').then(res => {
-      return res.json();
-    }).then(res => {
-      this.setState({
-        table: res
-      });
-    }).catch(err => {
-			console.log(err);
-		});
-  }
-
   render() {
 		if(!this.state.loaded) {
 			 return <AppLoading />;
@@ -43,7 +42,7 @@ class GoalsAssistsBody extends Component {
 			<ContainerView>
         <FlatList
           data={
-						this.state.table
+						this.state.players
 					}
           renderItem={({item}) => {
 						let logo = images[item.team] && images[item.team]["uri"] ? images[item.team]["uri"] : null;
@@ -51,7 +50,7 @@ class GoalsAssistsBody extends Component {
 							<StyledView key={item.name}>
 								<TeamLogo source={logo} />
 								<PlayerText>{item.player}</PlayerText>
-								<InfoText>{item.goals}</InfoText>
+								<InfoText>{item.goals || item.assists}</InfoText>
 								<InfoText>{item.team}</InfoText>
 							</StyledView>
 						)
@@ -65,7 +64,7 @@ class GoalsAssistsBody extends Component {
 }
 
 const ContainerView = styled.View`
-	padding-bottom: 120px;
+
 `;
 
 const StyledView = styled.View`
@@ -104,4 +103,4 @@ const TeamLogo = styled.Image`
 	margin-right: 10px;
 `;
 
-export default GoalsAssistsBody;
+export default GoalsBody;

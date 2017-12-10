@@ -23,6 +23,8 @@
     "moment": "^2.19.3",
     "react": "16.0.0",
     "react-native": "0.50.3",
+    "react-native-vector-icons": "^4.4.2",
+    "react-navigation": "^1.0.0-beta.21",
     "styled-components": "^2.2.4"
   }
 }

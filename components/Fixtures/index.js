@@ -24,7 +24,7 @@ class Fixtures extends Component {
 	};
 
   componentDidMount() {
-    fetch('https://opjiuqzobv.localtunnel.me/team/arsenal').then(res => {
+    fetch('https://bcbtuizkbj.localtunnel.me/team/arsenal').then(res => {
       return res.json();
     }).then(res => {
       this.setState({
@@ -79,7 +79,7 @@ class Fixtures extends Component {
 }
 
 const ContainerView = styled.View`
-	padding-bottom: 120px;
+
 `;
 
 const BoxView = styled.View`

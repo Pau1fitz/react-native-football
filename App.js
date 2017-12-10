@@ -1,25 +1,81 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import styled from 'styled-components/native';
+import { View, Text, Button } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 
-import Header from './components/Header';
 import Table from './components/Table';
+import Goals from './components/GoalsBody';
+import Assists from './components/AssistsBody';
 import Fixtures from './components/Fixtures';
-import GoalsAssistsBody from './components/GoalsAssistsBody';
 
-export default class App extends React.Component {
+const HomeScreen = ({ navigation }) => (
+  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
 
-  render() {
+    <Button
+      onPress={() => navigation.navigate('Table')}
+      title="Go to Table"
+    />
 
-    return (
-      <MainView>
-				<Header />
-				<GoalsAssistsBody />
-      </MainView>
-    );
-  }
-}
+		<Button
+			onPress={() => navigation.navigate('Goals')}
+			title="Go to Goals"
+		/>
 
-const MainView = styled.View`
-	background-color: rgb(255, 255, 255);
-`;
+		<Button
+			onPress={() => navigation.navigate('Assists')}
+			title="Go to Assists"
+		/>
+
+		<Button
+			onPress={() => navigation.navigate('Fixtures')}
+			title="Go to Fixtures"
+		/>
+  </View>
+);
+
+
+const RootNavigator = StackNavigator({
+  Home: {
+    screen: HomeScreen,
+    navigationOptions: {
+      headerTitle: 'Home',
+			headerTintColor: '#fff',
+			headerStyle: { backgroundColor: 'rgb(60, 0, 60)'},
+    },
+  },
+  Table: {
+    screen: Table,
+		navigationOptions: {
+      headerTitle: 'Table',
+			headerTintColor: '#fff',
+			headerStyle: { backgroundColor: 'rgb(60, 0, 60)'},
+    },
+  },
+	Goals: {
+		screen: Goals,
+		navigationOptions: {
+      headerTitle: 'Goals',
+			headerTintColor: '#fff',
+			headerStyle: { backgroundColor: 'rgb(60, 0, 60)'},
+    },
+	},
+
+	Assists: {
+		screen: Assists,
+		navigationOptions: {
+			headerTitle: 'Assists',
+			headerTintColor: '#fff',
+			headerStyle: { backgroundColor: 'rgb(60, 0, 60)'},
+		},
+	},
+
+	Fixtures: {
+		screen: Fixtures,
+		navigationOptions: {
+			headerTitle: 'Fixtures',
+			headerTintColor: '#fff',
+			headerStyle: { backgroundColor: 'rgb(60, 0, 60)'},
+		},
+	},
+});
+
+export default RootNavigator;
