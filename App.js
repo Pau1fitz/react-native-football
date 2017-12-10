@@ -5,7 +5,7 @@ import { StackNavigator } from 'react-navigation';
 import Table from './components/Table';
 import Goals from './components/GoalsBody';
 import Assists from './components/AssistsBody';
-import Fixtures from './components/Fixtures';
+import Fixtures from './components/FixtureList';
 
 const HomeScreen = ({ navigation }) => (
   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -25,10 +25,6 @@ const HomeScreen = ({ navigation }) => (
 			title="Go to Assists"
 		/>
 
-		<Button
-			onPress={() => navigation.navigate('Fixtures')}
-			title="Go to Fixtures"
-		/>
   </View>
 );
 

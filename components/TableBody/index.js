@@ -23,7 +23,7 @@ class TableBody extends Component {
 	};
 
   componentDidMount() {
-    fetch('https://bcbtuizkbj.localtunnel.me/table').then(res => {
+    fetch('https://vast-beach-43552.herokuapp.com/table').then(res => {
       return res.json();
     }).then(res => {
       this.setState({

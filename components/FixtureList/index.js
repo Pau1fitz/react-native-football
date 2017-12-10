@@ -5,7 +5,7 @@ import { AppLoading, Font } from 'expo';
 import moment from 'moment';
 import { FlatList, Text, ScrollView, View, Image } from 'react-native';
 
-class Fixtures extends Component {
+class FixtureList extends Component {
 
   state = {
     fixtures: [],
@@ -24,11 +24,15 @@ class Fixtures extends Component {
 	};
 
   componentDidMount() {
-    fetch('https://bcbtuizkbj.localtunnel.me/team/arsenal').then(res => {
+
+		let team = this.props.navigation.state.params.team;
+
+    fetch(`https://vast-beach-43552.herokuapp.com/team/${team}`).then(res => {
       return res.json();
     }).then(res => {
       this.setState({
-        fixtures: res
+        fixtures: res,
+				team
       });
     }).catch(err => {
 			console.log(err);
@@ -41,31 +45,36 @@ class Fixtures extends Component {
 			 return <AppLoading />;
 		}
 
+		let teamIcon = this.props.navigation.state.params.team;
+		let teamName = this.props.navigation.state.params.teamName;
+
+		let logo = images[teamIcon]["uri"];
+
     return (
 			<ContainerView>
+			<TopRow>
+				<HeaderTeamText>{teamName}</HeaderTeamText>
+				<TeamLogo source={logo} />
+			</TopRow>
 			<FlatList
 				data={
 					this.state.fixtures
 				}
 				renderItem={({item}) => {
 
-					let team = item.opponent;
-					let logoExists = images[team] && images[team]["uri"] ? images[team]["uri"] : null;
-					let arsenalLogo = images['Arsenal']["uri"];
-					let firstLogo = item.home_or_away === 'home' ? arsenalLogo : logoExists;
-					let secondLogo = item.home_or_away === 'away' ? arsenalLogo : logoExists;
+					let team = item.abbr;
+					let oppositionLogo = images[team]["uri"] ? images[team]["uri"] : null;
 
 					return (
 						<BoxView key={item.name}>
 							<DateText>{moment(item.start).format('DD MMMM YYYY')}</DateText>
 							<MiddleRow>
-								<TeamLogo source={firstLogo} />
+								<TeamLogo source={oppositionLogo} />
 								<ScoreText>{item.score}</ScoreText>
-								<TeamLogo source={secondLogo} />
 							</MiddleRow>
 							<BottomRow>
-								<TeamText>{item.home_or_away === 'home' ? 'Arsenal' :item.opponent}</TeamText>
-								<TeamText>{item.home_or_away === 'away' ? 'Arsenal' :item.opponent}</TeamText>
+								<TeamText>{item.opponent}</TeamText>
+								<InfoText>{item.winLossDraw}</InfoText>
 							</BottomRow>
 						</BoxView>
 					)
@@ -93,6 +102,16 @@ const BoxView = styled.View`
 	padding: 20px;
 `;
 
+const TopRow = styled.View`
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-left: 10;
+	margin-right: 10;
+	margin-top: 10;
+	margin-bottom: 10;
+`
+
 const MiddleRow = styled.View`
 	display: flex;
 	flex-direction: row;
@@ -105,17 +124,10 @@ const BottomRow = styled.View`
 	justify-content: space-between;
 `
 
-const InfoText = styled.Text`
-  color: rgb(62, 69, 74);
-	font-size: 16px;
-	font-family: 'pt';
-`;
-
 const DateText = styled.Text`
   color: rgb(60, 0, 60);
 	font-size: 16px;
 	font-family: 'pt';
-	text-align: center;
 	padding-bottom: 15px;
 `;
 
@@ -125,9 +137,24 @@ const ScoreText = styled.Text`
 	font-family: 'pt';
 `;
 
+const HeaderTeamText = styled.Text`
+  color: rgb(60, 0, 60);
+	font-size: 24px;
+	font-family: 'pt';
+	padding-top: 10px;
+`;
+
 const TeamText = styled.Text`
   color: rgb(60, 0, 60);
 	font-size: 16px;
+	font-family: 'pt';
+	padding-top: 10px;
+`;
+
+
+const InfoText = styled.Text`
+  color: rgb(60, 0, 60);
+	font-size: 15px;
 	font-family: 'pt';
 	padding-top: 10px;
 `;
@@ -137,4 +164,4 @@ const TeamLogo = styled.Image`
 	height: 50px;
 `;
 
-export default Fixtures;
+export default FixtureList;

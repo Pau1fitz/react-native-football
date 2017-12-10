@@ -1,59 +1,59 @@
 const images = {
-  'Arsenal': {
+  ARS: {
     uri: require('./images/ARS.png')
   },
-	'Brighton': {
+	BHA: {
     uri: require('./images/BHA.png')
   },
-	'AFC Bournemouth': {
+	BOU: {
 		uri: require('./images/BOU.png')
 	},
-	'Burnley FC': {
+	BUR: {
 		uri: require('./images/BUR.png')
 	},
-	'Chelsea': {
+	CHE: {
 		uri: require('./images/CHE.png')
 	},
-	'Crystal Palace': {
+	CRY: {
 		uri: require('./images/CRY.png')
 	},
-	'Everton': {
+	EVE: {
 		uri: require('./images/EVE.png')
 	},
-	'Huddersfield Town': {
+	HUD: {
 		uri: require('./images/HUD.png')
 	},
-	'Leicester': {
+	LEI: {
 		uri: require('./images/LEI.png')
 	},
-	'Liverpool': {
+	LIV: {
 		uri: require('./images/LIV.png')
 	},
-	'Man Utd': {
+	MAN: {
 		uri: require('./images/MAN.png')
 	},
-	'Man City': {
+	MNC: {
 		uri: require('./images/MNC.png')
 	},
-	'Newcastle United': {
+	NEW: {
 		uri: require('./images/NEW.png')
 	},
-	'Southampton': {
+	SOU: {
 		uri: require('./images/SOU.png')
 	},
-	'Stoke': {
+	STK: {
 		uri: require('./images/STK.png')
 	},
-	'Swansea': {
+	SWA: {
 		uri: require('./images/SWA.png')
 	},
-	'Tottenham': {
+	TOT: {
 		uri: require('./images/TOT.png')
 	},
-	'Watford': {
+	WAT: {
 		uri: require('./images/WAT.png')
 	},
-	'West Bromwich Albion': {
+	WBA: {
 		uri: require('./images/WBA.png')
 	},
 	WHU: {

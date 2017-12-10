@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import styled from 'styled-components/native';
-import { images } from './images';
-import { AppLoading, Font } from 'expo';
-import { FlatList, Text, ScrollView, View, Image } from 'react-native';
 import PlayerList from '../PlayerList';
 
 class GoalsBody extends Component {
@@ -12,7 +8,7 @@ class GoalsBody extends Component {
 	}
 
   componentDidMount() {
-    fetch('https://bcbtuizkbj.localtunnel.me/topscorers').then(res => {
+    fetch('https://vast-beach-43552.herokuapp.com/topscorers').then(res => {
       return res.json();
     }).then(res => {
       this.setState({
@@ -25,7 +21,7 @@ class GoalsBody extends Component {
 
   render() {
     return (
-			<PlayerList players={ this.state.players }/>
+			<PlayerList navigation={this.props.navigation} players={ this.state.players }/>
     );
   }
 }

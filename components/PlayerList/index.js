@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import { images } from './images';
 import { AppLoading, Font } from 'expo';
-import { FlatList, Text, ScrollView, View, Image } from 'react-native';
+import { FlatList, Text, ScrollView, View, Image, TouchableHighlight } from 'react-native';
 
 class GoalsBody extends Component {
 
@@ -12,8 +12,6 @@ class GoalsBody extends Component {
   };
 
 	componentWillReceiveProps(nextProps) {
-
-		console.log(nextProps)
 
 		if(this.props != nextProps) {
 			this.setState({
@@ -45,13 +43,15 @@ class GoalsBody extends Component {
 						this.state.players
 					}
           renderItem={({item}) => {
-						let logo = images[item.team] && images[item.team]["uri"] ? images[item.team]["uri"] : null;
+						let logo = images[item.abbr] && images[item.abbr]["uri"] ? images[item.abbr]["uri"] : null;
 						return (
-							<StyledView key={item.name}>
-								<TeamLogo source={logo} />
+							<StyledView>
+								<TouchableHighlight onPress={() => this.props.navigation.navigate('Fixtures', {team: item.abbr, teamName: item.team })}>
+									<TeamLogo source={logo} />
+								</TouchableHighlight>
 								<PlayerText>{item.player}</PlayerText>
 								<InfoText>{item.goals || item.assists}</InfoText>
-								<InfoText>{item.team}</InfoText>
+								<TeamText>{item.team}</TeamText>
 							</StyledView>
 						)
 						}
@@ -78,21 +78,21 @@ const StyledView = styled.View`
 
 const InfoText = styled.Text`
   color: rgb(60, 0, 60);
-	font-size: 16px;
+	font-size: 15px;
 	font-family: 'pt';
 	flex: 1;
 `;
 
 const PlayerText = styled.Text`
   color: rgb(60, 0, 60);
-	font-size: 16px;
+	font-size: 15px;
 	font-family: 'pt';
-	flex: 2;
+	flex: 3;
 `;
 
 const TeamText = styled.Text`
   color: rgb(60, 0, 60);
-	font-size: 16px;
+	font-size: 15px;
 	font-family: 'pt';
 	flex: 2;
 `;
