@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
-import { images } from './images';
+import { images } from '../../assets/images';
 import { AppLoading, Font } from 'expo';
 import { FlatList, Text, ScrollView, View, Image, TouchableHighlight } from 'react-native';
 
@@ -46,7 +46,7 @@ class GoalsBody extends Component {
 						let logo = images[item.abbr] && images[item.abbr]["uri"] ? images[item.abbr]["uri"] : null;
 						return (
 							<StyledView>
-								<TouchableHighlight onPress={() => this.props.navigation.navigate('Fixtures', {team: item.abbr, teamName: item.team })}>
+								<TouchableHighlight onPress={() => this.props.navigation.navigate('Results', {team: item.abbr, teamName: item.team })}>
 									<TeamLogo source={logo} />
 								</TouchableHighlight>
 								<PlayerText>{item.player}</PlayerText>

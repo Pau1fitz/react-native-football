@@ -5,7 +5,7 @@ import { StackNavigator } from 'react-navigation';
 import Table from './components/Table';
 import Goals from './components/GoalsBody';
 import Assists from './components/AssistsBody';
-import Fixtures from './components/FixtureList';
+import Results from './components/Results';
 
 const HomeScreen = ({ navigation }) => (
   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -64,10 +64,10 @@ const RootNavigator = StackNavigator({
 		},
 	},
 
-	Fixtures: {
-		screen: Fixtures,
+	Results: {
+		screen: Results,
 		navigationOptions: {
-			headerTitle: 'Fixtures',
+			headerTitle: 'Results',
 			headerTintColor: '#fff',
 			headerStyle: { backgroundColor: 'rgb(60, 0, 60)'},
 		},

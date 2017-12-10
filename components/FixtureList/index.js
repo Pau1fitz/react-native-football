@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
-import { images } from './images';
+import { images } from '../../assets/images';
 import { AppLoading, Font } from 'expo';
 import moment from 'moment';
 import { FlatList, Text, ScrollView, View, Image } from 'react-native';
@@ -12,9 +12,17 @@ class FixtureList extends Component {
 		loaded: false
   };
 
+	componentWillReceiveProps(nextProps) {
+		if(this.props != nextProps) {
+			this.setState({
+				fixtures: nextProps.fixtures
+			});
+		}
+	}
+
 	componentWillMount() {
 		this._loadAssetsAsync();
-	}
+	};
 
 	_loadAssetsAsync = async () => {
 		await Font.loadAsync({
@@ -23,21 +31,6 @@ class FixtureList extends Component {
 		this.setState({ loaded: true });
 	};
 
-  componentDidMount() {
-
-		let team = this.props.navigation.state.params.team;
-
-    fetch(`https://vast-beach-43552.herokuapp.com/team/${team}`).then(res => {
-      return res.json();
-    }).then(res => {
-      this.setState({
-        fixtures: res,
-				team
-      });
-    }).catch(err => {
-			console.log(err);
-		});
-  }
 
   render() {
 
@@ -45,39 +38,35 @@ class FixtureList extends Component {
 			 return <AppLoading />;
 		}
 
-		let teamIcon = this.props.navigation.state.params.team;
-		let teamName = this.props.navigation.state.params.teamName;
-
-		let logo = images[teamIcon]["uri"];
 
     return (
 			<ContainerView>
-			<TopRow>
-				<HeaderTeamText>{teamName}</HeaderTeamText>
-				<TeamLogo source={logo} />
-			</TopRow>
-			<FlatList
-				data={
-					this.state.fixtures
-				}
-				renderItem={({item}) => {
+				<TopRow>
+					<HeaderTeamText>{this.props.teamName}</HeaderTeamText>
+					<TeamLogo source={this.props.logo} />
+				</TopRow>
+				<FlatList
+					data={
+						this.state.fixtures
+					}
+					renderItem={({item}) => {
 
-					let team = item.abbr;
-					let oppositionLogo = images[team]["uri"] ? images[team]["uri"] : null;
+						let team = item.abbr;
+						let oppositionLogo = images[team]["uri"] ? images[team]["uri"] : null;
 
-					return (
-						<BoxView key={item.name}>
-							<DateText>{moment(item.start).format('DD MMMM YYYY')}</DateText>
-							<MiddleRow>
-								<TeamLogo source={oppositionLogo} />
-								<ScoreText>{item.score}</ScoreText>
-							</MiddleRow>
-							<BottomRow>
-								<TeamText>{item.opponent}</TeamText>
-								<InfoText>{item.winLossDraw}</InfoText>
-							</BottomRow>
-						</BoxView>
-					)
+						return (
+							<BoxView key={item.name}>
+								<DateText>{moment(item.start).format('DD MMMM YYYY')}</DateText>
+								<MiddleRow>
+									<TeamLogo source={oppositionLogo} />
+									<ScoreText>{item.score}</ScoreText>
+								</MiddleRow>
+								<BottomRow>
+									<TeamText>{item.opponent}</TeamText>
+									<InfoText>{item.winLossDraw}</InfoText>
+								</BottomRow>
+							</BoxView>
+						)
 					}
 				}
 				keyExtractor={(item, index) => index}
