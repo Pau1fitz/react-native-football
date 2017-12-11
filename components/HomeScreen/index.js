@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import { images } from '../../assets/images';
-import { AppLoading, Font } from 'expo';
-import { FlatList, Text, ScrollView, View, Image, TouchableHighlight, Button, Dimensions } from 'react-native';
+import {  Font } from 'expo';
 
-class GoalsBody extends Component {
+import {
+	FlatList,
+	Text,
+	ScrollView,
+	View,
+	Image,
+	TouchableHighlight,
+	Button
+} from 'react-native';
 
+import Loading from '../Loading';
+
+class HomeScreen extends Component {
 
   state = {
 		loaded: false,
@@ -36,8 +46,8 @@ class GoalsBody extends Component {
 	};
 
   render() {
-		if(!this.state.loaded) {
-			 return <AppLoading />;
+		if(!this.state.loaded || this.state.teams.length == 0) {
+			 return <Loading />;
 		}
 
     return (
@@ -115,4 +125,4 @@ const TeamLogo = styled.Image`
 	height: 35px;
 `;
 
-export default GoalsBody;
+export default HomeScreen;
