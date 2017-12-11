@@ -41,6 +41,7 @@ class HomeScreen extends Component {
 	_loadAssetsAsync = async () => {
 		await Font.loadAsync({
 			pt: require('../../assets/fonts/pt.ttf'),
+			premierleague: require('../../assets/fonts/premierleague.ttf')
 		});
 		this.setState({ loaded: true });
 	};
@@ -51,53 +52,70 @@ class HomeScreen extends Component {
 		}
 
     return (
-			<ContainerView>
+			<View>
 
-			    <Button
-			      onPress={() => this.props.navigation.navigate('Table')}
-			      title="Go to Table"
-			    />
+				<MainLogoContainer>
+					<MainLogo source={require('../../assets/images/main-logo.png')} />
+				</MainLogoContainer>
 
-					<Button
-						onPress={() => this.props.navigation.navigate('Goals')}
-						title="Go to Goals"
-					/>
+				<NavView>
 
-					<Button
-						onPress={() => this.props.navigation.navigate('Assists')}
-						title="Go to Assists"
-					/>
+					<TouchableHighlight
+						onPress={() => this.props.navigation.navigate('Table')}>
+						<MenuText>TABLE</MenuText>
+					</TouchableHighlight>
 
-					<FlatList
-						data={
-							this.state.teams
+					<TouchableHighlight
+						onPress={() => this.props.navigation.navigate('Goals')}>
+						<MenuText>GOALS</MenuText>
+					</TouchableHighlight>
+
+					<TouchableHighlight onPress={() => this.props.navigation.navigate('Assists')}>
+						<MenuText>ASSISTS</MenuText>
+					</TouchableHighlight>
+
+				</NavView>
+
+				<FlatList
+					data={
+						this.state.teams
+					}
+					numColumns={2}
+					renderItem={({item}) => {
+
+						let team = item.abbr;
+						let logo = images[team]["uri"];
+
+						return (
+							<BoxView>
+								<TouchableHighlight onPress={() => this.props.navigation.navigate('Results', {team: item.abbr, teamName: item.name })}>
+									<TeamLogo source={logo} />
+								</TouchableHighlight>
+								<TeamText>{item.name}</TeamText>
+							</BoxView>
+						);
 						}
-						numColumns={2}
-						renderItem={({item}) => {
-
-							let team = item.abbr;
-							let logo = images[team]["uri"];
-
-							return (
-								<BoxView>
-									<TouchableHighlight onPress={() => this.props.navigation.navigate('Results', {team: item.abbr, teamName: item.name })}>
-										<TeamLogo source={logo} />
-									</TouchableHighlight>
-									<TeamText>{item.name}</TeamText>
-								</BoxView>
-							);
-							}
-						}
-						keyExtractor={(item, index) => index}
-					/>
-
-      </ContainerView>
+					}
+					keyExtractor={(item, index) => index}
+				/>
+      </View>
     );
   }
 }
 
-const ContainerView = styled.ScrollView`
+const NavView = styled.View`
+	flex-direction: row;
+	margin-bottom: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	justify-content: space-between;
+`;
 
+
+const MenuText = styled.Text`
+	font-family: 'premierleague';
+  color: rgb(60, 0, 60);
+	font-size: 22px;
 `;
 
 const BoxView = styled.View`
@@ -123,6 +141,15 @@ const TeamText = styled.Text`
 const TeamLogo = styled.Image`
   width: 35px;
 	height: 35px;
+`;
+
+const MainLogoContainer = styled.View`
+	align-items: center;
+`;
+
+const MainLogo = styled.Image`
+	width: 120px;
+	height: 120px
 `;
 
 export default HomeScreen;
