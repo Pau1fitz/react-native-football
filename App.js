@@ -6,27 +6,28 @@ import Table from './components/Table';
 import Goals from './components/GoalsBody';
 import Assists from './components/AssistsBody';
 import Results from './components/Results';
+import HomeScreen from './components/HomeScreen';
 
-const HomeScreen = ({ navigation }) => (
-  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-
-    <Button
-      onPress={() => navigation.navigate('Table')}
-      title="Go to Table"
-    />
-
-		<Button
-			onPress={() => navigation.navigate('Goals')}
-			title="Go to Goals"
-		/>
-
-		<Button
-			onPress={() => navigation.navigate('Assists')}
-			title="Go to Assists"
-		/>
-
-  </View>
-);
+// const HomeScreen = ({ navigation }) => (
+//   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//
+//     <Button
+//       onPress={() => navigation.navigate('Table')}
+//       title="Go to Table"
+//     />
+//
+// 		<Button
+// 			onPress={() => navigation.navigate('Goals')}
+// 			title="Go to Goals"
+// 		/>
+//
+// 		<Button
+// 			onPress={() => navigation.navigate('Assists')}
+// 			title="Go to Assists"
+// 		/>
+//
+//   </View>
+// );
 
 
 const RootNavigator = StackNavigator({

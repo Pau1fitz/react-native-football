@@ -61,7 +61,7 @@ class TableBody extends Component {
 						let team = item.abbr;
 						let logo = images[team]["uri"];
 						return (
-							<StyledView key={item.name}>
+							<StyledView>
 								<TeamLogo source={logo} />
 								<TeamText>{item.name}</TeamText>
 								<InfoText>{item.gamesPlayed}</InfoText>

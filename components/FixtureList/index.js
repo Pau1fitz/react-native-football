@@ -140,7 +140,6 @@ const TeamText = styled.Text`
 	padding-top: 10px;
 `;
 
-
 const InfoText = styled.Text`
   color: rgb(60, 0, 60);
 	font-size: 15px;
