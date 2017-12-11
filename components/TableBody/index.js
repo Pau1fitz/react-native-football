@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import { images } from '../../assets/images';
-import { AppLoading, Font } from 'expo';
-import { FlatList, Text, ScrollView, View, Image } from 'react-native';
+import { Font } from 'expo';
+import {
+	FlatList,
+	Text,
+	ScrollView,
+	View,
+	Image
+} from 'react-native';
+
+import Loading from '../Loading';
 
 class TableBody extends Component {
 
@@ -46,8 +54,8 @@ class TableBody extends Component {
 
   render() {
 
-		if(!this.state.loaded) {
-			 return <AppLoading />;
+		if(!this.state.loaded || this.state.table.length == 0) {
+			 return <Loading />;
 		}
 
     return (

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import { images } from '../../assets/images';
-import { AppLoading, Font } from 'expo';
+import { Font } from 'expo';
 import { FlatList, Text, ScrollView, View, Image, TouchableHighlight } from 'react-native';
+
+import Loading from '../Loading';
 
 class GoalsBody extends Component {
 
@@ -32,8 +34,8 @@ class GoalsBody extends Component {
 	};
 
   render() {
-		if(!this.state.loaded) {
-			 return <AppLoading />;
+		if(!this.state.loaded || this.state.players.length === 0) {
+			 return <Loading />;
 		}
 
     return (

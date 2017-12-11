@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import { images } from '../../assets/images';
-import { AppLoading, Font } from 'expo';
+import { Font } from 'expo';
 import moment from 'moment';
 import { FlatList, Text, ScrollView, View, Image } from 'react-native';
+
+import Loading from '../Loading';
 
 class FixtureList extends Component {
 
@@ -34,8 +36,8 @@ class FixtureList extends Component {
 
   render() {
 
-		if(!this.state.loaded) {
-			 return <AppLoading />;
+		if(!this.state.loaded || this.state.fixtures.length == 0) {
+			 return <Loading />;
 		}
 
 

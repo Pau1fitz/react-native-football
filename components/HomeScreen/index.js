@@ -40,8 +40,6 @@ class GoalsBody extends Component {
 			 return <AppLoading />;
 		}
 
-		console.log(this.state)
-
     return (
 			<ContainerView>
 
