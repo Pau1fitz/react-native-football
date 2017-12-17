@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import { images } from '../../assets/images';
-import { Font } from 'expo';
 import moment from 'moment';
 import { FlatList, Text, ScrollView, View, Image } from 'react-native';
 
@@ -10,8 +9,7 @@ import Loading from '../Loading';
 class FixtureList extends Component {
 
   state = {
-    fixtures: [],
-		loaded: false
+    fixtures: []
   };
 
 	componentWillReceiveProps(nextProps) {
@@ -22,21 +20,10 @@ class FixtureList extends Component {
 		}
 	}
 
-	componentWillMount() {
-		this._loadAssetsAsync();
-	};
-
-	_loadAssetsAsync = async () => {
-		await Font.loadAsync({
-			pt: require('../../assets/fonts/pt.ttf'),
-		});
-		this.setState({ loaded: true });
-	};
-
 
   render() {
 
-		if(!this.state.loaded || this.state.fixtures.length == 0) {
+		if(this.state.fixtures.length == 0) {
 			 return <Loading />;
 		}
 
@@ -118,34 +105,34 @@ const BottomRow = styled.View`
 const DateText = styled.Text`
   color: rgb(60, 0, 60);
 	font-size: 16px;
-	font-family: 'pt';
+	font-family: 'PT Sans';
 	padding-bottom: 15px;
 `;
 
 const ScoreText = styled.Text`
   color: rgb(60, 0, 60);
 	font-size: 28px;
-	font-family: 'pt';
+	font-family: 'PT Sans';
 `;
 
 const HeaderTeamText = styled.Text`
   color: rgb(60, 0, 60);
 	font-size: 24px;
-	font-family: 'pt';
+	font-family: 'PT Sans';
 	padding-top: 10px;
 `;
 
 const TeamText = styled.Text`
   color: rgb(60, 0, 60);
 	font-size: 16px;
-	font-family: 'pt';
+	font-family: 'PT Sans';
 	padding-top: 10px;
 `;
 
 const InfoText = styled.Text`
   color: rgb(60, 0, 60);
 	font-size: 15px;
-	font-family: 'pt';
+	font-family: 'PT Sans';
 	padding-top: 10px;
 `;
 

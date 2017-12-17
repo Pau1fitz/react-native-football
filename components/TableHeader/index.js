@@ -1,30 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import { FlatList, Text, View } from 'react-native';
-import { AppLoading, Font } from 'expo';
 
 class TableHeader extends Component {
 
-	state = {
-		loaded: false
-	};
-
-	componentWillMount() {
-		this._loadAssetsAsync();
-	}
-
-	_loadAssetsAsync = async () => {
-		await Font.loadAsync({
-			pt: require('../../assets/fonts/pt.ttf'),
-		});
-		this.setState({ loaded: true });
-	};
-
   render() {
-
-		if(!this.state.loaded) {
-		 return <AppLoading />;
-		}
 
 		return (
 			<StyledView>
@@ -54,14 +34,14 @@ const InfoText = styled.Text`
   color: rgb(62, 69, 74);
 	font-size: 12px;
 	flex: 1;
-	font-family: 'pt';
+	font-family: 'PT Sans';
 `;
 
 const TeamText = styled.Text`
   color: rgb(62, 69, 74);
 	font-size: 12px;
 	flex: 5;
-	font-family: 'pt';
+	font-family: 'PT Sans';
 `;
 
 const TeamLogo = styled.Text`

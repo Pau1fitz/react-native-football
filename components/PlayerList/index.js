@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import { images } from '../../assets/images';
-import { Font } from 'expo';
 import { FlatList, Text, ScrollView, View, Image, TouchableHighlight } from 'react-native';
 
 import Loading from '../Loading';
@@ -9,7 +8,6 @@ import Loading from '../Loading';
 class GoalsBody extends Component {
 
   state = {
-		loaded: false,
 		players: []
   };
 
@@ -22,19 +20,8 @@ class GoalsBody extends Component {
 		}
 	}
 
-	componentWillMount() {
-		this._loadAssetsAsync();
-	}
-
-	_loadAssetsAsync = async () => {
-		await Font.loadAsync({
-			pt: require('../../assets/fonts/pt.ttf'),
-		});
-		this.setState({ loaded: true });
-	};
-
   render() {
-		if(!this.state.loaded || this.state.players.length === 0) {
+		if(this.state.players.length === 0) {
 			 return <Loading />;
 		}
 
@@ -81,21 +68,21 @@ const StyledView = styled.View`
 const InfoText = styled.Text`
   color: rgb(60, 0, 60);
 	font-size: 15px;
-	font-family: 'pt';
+	font-family: 'PT Sans';
 	flex: 1;
 `;
 
 const PlayerText = styled.Text`
   color: rgb(60, 0, 60);
 	font-size: 15px;
-	font-family: 'pt';
+	font-family: 'PT Sans';
 	flex: 3;
 `;
 
 const TeamText = styled.Text`
   color: rgb(60, 0, 60);
 	font-size: 15px;
-	font-family: 'pt';
+	font-family: 'PT Sans';
 	flex: 2;
 `;
 

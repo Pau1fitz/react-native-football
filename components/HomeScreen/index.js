@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import { images } from '../../assets/images';
-import {  Font } from 'expo';
 
 import {
 	FlatList,
@@ -18,7 +17,6 @@ import Loading from '../Loading';
 class HomeScreen extends Component {
 
   state = {
-		loaded: false,
 		teams: []
   };
 
@@ -34,20 +32,8 @@ class HomeScreen extends Component {
 		});
 	}
 
-	componentWillMount() {
-		this._loadAssetsAsync();
-	}
-
-	_loadAssetsAsync = async () => {
-		await Font.loadAsync({
-			pt: require('../../assets/fonts/pt.ttf'),
-			premierleague: require('../../assets/fonts/premierleague.ttf')
-		});
-		this.setState({ loaded: true });
-	};
-
   render() {
-		if(!this.state.loaded || this.state.teams.length == 0) {
+		if(this.state.teams.length == 0) {
 			 return <Loading />;
 		}
 
@@ -133,7 +119,7 @@ const BoxView = styled.View`
 const TeamText = styled.Text`
   color: rgb(60, 0, 60);
 	font-size: 16px;
-	font-family: 'pt';
+	font-family: 'PT Sans';
 	padding-top: 5px;
 	text-align: center;
 `;

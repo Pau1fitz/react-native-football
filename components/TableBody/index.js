@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import { images } from '../../assets/images';
-import { Font } from 'expo';
 import {
 	FlatList,
 	Text,
@@ -16,19 +15,7 @@ class TableBody extends Component {
 
   state = {
     table: [],
-		loaded: false
   };
-
-	componentWillMount() {
-		this._loadAssetsAsync();
-	}
-
-	_loadAssetsAsync = async () => {
-		await Font.loadAsync({
-			pt: require('../../assets/fonts/pt.ttf'),
-		});
-		this.setState({ loaded: true });
-	};
 
   componentDidMount() {
     fetch('https://vast-beach-43552.herokuapp.com/table').then(res => {
@@ -54,7 +41,7 @@ class TableBody extends Component {
 
   render() {
 
-		if(!this.state.loaded || this.state.table.length == 0) {
+		if(this.state.table.length == 0) {
 			 return <Loading />;
 		}
 
@@ -106,14 +93,14 @@ const InfoText = styled.Text`
   color: rgb(60, 0, 60);
 	font-size: 16px;
 	flex: 1;
-	font-family: 'pt';
+	font-family: 'PT Sans';
 `;
 
 const TeamText = styled.Text`
   color: rgb(60, 0, 60);
 	font-size: 16px;
 	flex: 5;
-	font-family: 'pt';
+	font-family: 'PT Sans';
 `;
 
 const TeamLogo = styled.Image`
