@@ -60,6 +60,10 @@ class HomeScreen extends Component {
 						<MenuText>ASSISTS</MenuText>
 					</TouchableHighlight>
 
+					<TouchableHighlight onPress={() => this.props.navigation.navigate('Assists')}>
+						<MenuText>NEWS</MenuText>
+					</TouchableHighlight>
+
 				</NavView>
 
 				<FlatList
