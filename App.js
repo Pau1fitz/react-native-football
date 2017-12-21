@@ -7,6 +7,7 @@ import Goals from './components/GoalsBody';
 import Assists from './components/AssistsBody';
 import Results from './components/Results';
 import HomeScreen from './components/HomeScreen';
+import News from './components/News';
 
 const RootNavigator = StackNavigator({
   Home: {
@@ -47,6 +48,15 @@ const RootNavigator = StackNavigator({
 		screen: Results,
 		navigationOptions: {
 			headerTitle: 'Results',
+			headerTintColor: '#fff',
+			headerStyle: { backgroundColor: 'rgb(60, 0, 60)'},
+		},
+	},
+
+	News: {
+		screen: News,
+		navigationOptions: {
+			headerTitle: 'News',
 			headerTintColor: '#fff',
 			headerStyle: { backgroundColor: 'rgb(60, 0, 60)'},
 		},
