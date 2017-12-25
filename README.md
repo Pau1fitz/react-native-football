@@ -3,11 +3,7 @@
 Premier League football app built using React Native. Contains Top Goal Scorers, Team Results, Fixtures, Latest News
 
 <div style style="display:flex;flex-direction:row;">
-  <img src="https://github.com/Pau1fitz/react-native-football/blob/master/home.png" alt="alt text" width="250">
-  <img src="https://github.com/Pau1fitz/react-native-football/blob/master/goals.png" alt="alt text" width="250">
-  <img src="https://github.com/Pau1fitz/react-native-football/blob/master/news.png" alt="alt text" width="250">
-  <img src="https://github.com/Pau1fitz/react-native-football/blob/master/results.png" alt="alt text" width="250">
-  <img src="https://github.com/Pau1fitz/react-native-football/blob/master/assists.png" alt="alt text" width="250">
+  <img src="https://github.com/Pau1fitz/react-native-football/blob/master/appvideo.gif" alt="alt text" width="250">
 </div>
 
 
@@ -20,6 +16,15 @@ Premier League football app built using React Native. Contains Top Goal Scorers,
 3. Run either `$ yarn install` or `$ npm install`
 
 4. Run via XCode or `$ react-native run-ios`
+
+
+<div style style="display:flex;flex-direction:row;">
+  <img src="https://github.com/Pau1fitz/react-native-football/blob/master/home.png" alt="alt text" width="250">
+  <img src="https://github.com/Pau1fitz/react-native-football/blob/master/goals.png" alt="alt text" width="250">
+  <img src="https://github.com/Pau1fitz/react-native-football/blob/master/news.png" alt="alt text" width="250">
+  <img src="https://github.com/Pau1fitz/react-native-football/blob/master/results.png" alt="alt text" width="250">
+  <img src="https://github.com/Pau1fitz/react-native-football/blob/master/assists.png" alt="alt text" width="250">
+</div>
 
 
 ## Contributing and License
