@@ -12,29 +12,13 @@ class FixtureList extends Component {
     fixtures: []
   };
 
-	componentDidMount() {
-
-		let team = this.props.navigation.state.params.team;
-		
-		fetch(`https://vast-beach-43552.herokuapp.com/nextGames/${team}`).then(res => {
-			return res.json();
-		}).then(res => {
+	componentWillReceiveProps(nextProps) {
+		if(this.props != nextProps) {
 			this.setState({
-				fixtures: res,
-				team
+				fixtures: nextProps.fixtures
 			});
-		}).catch(err => {
-			console.log(err);
-		});
+		}
 	}
-
-	// componentWillReceiveProps(nextProps) {
-	// 	if(this.props != nextProps) {
-	// 		this.setState({
-	// 			fixtures: nextProps.fixtures
-	// 		});
-	// 	}
-	// }
 
 
   render() {
