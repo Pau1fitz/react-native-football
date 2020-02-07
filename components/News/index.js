@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { FlatList, Text, ScrollView, View, Image } from 'react-native';
 import styled from 'styled-components/native';
 import { images } from '../../assets/images';
-import { FlatList, Text, ScrollView, View, Image } from 'react-native';
 import Loading from '../Loading';
 
 class News extends Component {
