@@ -18,7 +18,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
-    "moment": "^2.19.3",
+    "moment": "^2.29.2",
     "react": "16.0.0",
     "react-native": "0.50.3",
     "react-native-vector-icons": "^4.4.2",
