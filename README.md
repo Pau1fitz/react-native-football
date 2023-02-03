@@ -1,7 +1,5 @@
 ## React Native Football
 
-[![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
-
 Premier League football app built using React Native. Contains Top Goal Scorers, Team Results, Fixtures, Latest News
 
 <div style style="display:flex;flex-direction:row;">
