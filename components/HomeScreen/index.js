@@ -23,9 +23,9 @@ class HomeScreen extends Component {
 	componentDidMount() {
 		fetch('https://vast-beach-43552.herokuapp.com/teams').then(res => {
 			return res.json();
-		}).then(res => {
+		}).then(teams => {
 			this.setState({
-				teams: res
+				teams
 			});
 		}).catch(err => {
 			console.log(err);

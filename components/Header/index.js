@@ -3,7 +3,6 @@ import styled from 'styled-components/native';
 import { View, Text } from 'react-native';
 
 class Header extends Component {
-
   render() {
 		return (
 			<StyledHeader>
